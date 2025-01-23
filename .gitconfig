@@ -1,0 +1,4 @@
+# git l, git ll でログを見やすく表示する
+[alias]
+  l = log -10 --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
+  ll = log -50 --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
