@@ -13,7 +13,7 @@ on activateChromeWindow(windowName)
 		activate
 		set theWindows to every window
 		repeat with win in theWindows
-			if name of win is windowName then
+			if name of win starts with windowName then
 				set index of win to 1 -- Bring to front
 				return
 			end if
