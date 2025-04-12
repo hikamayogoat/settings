@@ -8,6 +8,7 @@
 # Optional parameters:
 # @raycast.icon 🤖
 
+## もう使わなくなったけど、一応こういうことができるというメモとして残しておく
 on activateChromeWindow(windowName)
 	tell application "Google Chrome"
 		activate
