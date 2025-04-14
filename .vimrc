@@ -18,6 +18,8 @@ set expandtab
 set tabstop=2
 " インデント幅を2に設定
 set shiftwidth=2
+" 検索で大文字小文字を区別しない
+set ignorecase
 " 現在の行を強調表示
 set cursorline
 " 括弧入力時の対応する括弧を表示
