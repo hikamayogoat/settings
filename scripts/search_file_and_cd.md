@@ -55,7 +55,7 @@ alias cdn='cdf package.json'
 
 ```sh
 local custom_script_dir="$HOME/${PATH_TO_SCRIPTS}"
-if [ -d "$custom_script_dir" ] && [ -n "$(fd .sh "$custom_script_dir" -e sh --maxdepth 1 --quiet)" ]; then
+if [ -d "$custom_script_dir" ] && [ -n "$(fd .sh "$custom_script_dir" -e sh --maxdepth 1)" ]; then
   for file in "$custom_script_dir"/*.sh; do
     source "$file"
   done
