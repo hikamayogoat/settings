@@ -34,5 +34,8 @@ set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " インサートモードでjjを押すとESCに変換
 inoremap <silent> jj <ESC>
+" q でマクロ記録が起動しないようにする
+nnoremap q <Nop>
 " シンタックスハイライトを有効にする
 syntax on
+
