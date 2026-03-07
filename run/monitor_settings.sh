@@ -8,4 +8,4 @@ brew install displayplacer
 displayplacer list
 
 # set Raycast script
-Raycast settings > Create Script Command を有効化し、作成しておくとよい
+# Raycast settings > Create Script Command を有効化し、作成しておくとよい
