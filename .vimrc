@@ -44,6 +44,9 @@ nnoremap q <Nop>
 " ====================================================================
 " 4. プラグイン管理 (vim-plug)
 " ====================================================================
+" 
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
 " :PlugInstall   - プラグインのインストール
 " :PlugUpdate    - プラグインの更新
 " :PlugClean     - 不要なプラグインの削除
