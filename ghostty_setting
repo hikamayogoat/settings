@@ -1,0 +1,12 @@
+# ~/.config/ghostty/config
+# 反映: cmd+shift+,
+
+# テーマ
+# https://cmuxthemes.com/
+theme = "Raycast Dark"
+
+# shift+enterを改行扱いする（v2）
+keybind = shift+enter=text:\x1b\r
+
+# 合字変換をオフ
+font-feature=-calt, -liga, -dlig
