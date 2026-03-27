@@ -1,3 +1,7 @@
+# コメントとかじゃなくて普通にメモ
+# brew bundle dump --global
+# mv ~/.Brewfile ./ 
+
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
