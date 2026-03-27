@@ -68,7 +68,11 @@ colorscheme codedark    " テーマ適用
 " ====================================================================
 " :CocConfig         - coc本体の設定(json)を開く
 " :CocList extensions - インストール済みの言語サーバー一覧
-" :CocInstall [名]    - 言語サーバーの追加 (例: coc-pyright)
+"   - coc-go
+"   - coc-pyright
+"   - coc-tsserver
+" :CocInstall [名]    - 言語サーバーの追加
+
 
 " --- 定義ジャンプ・参照 ---
 nmap <silent> gd <Plug>(coc-definition)
