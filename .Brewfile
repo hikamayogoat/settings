@@ -1,6 +1,6 @@
 # コメントとかじゃなくて普通にメモ
 # brew bundle dump --global
-# mv ~/.Brewfile ./ 
+# mv ~/.Brewfile ./
 
 tap "homebrew/services"
 tap "koekeishiya/formulae"
@@ -17,7 +17,6 @@ brew "peco"
 brew "yazi"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "koekeishiya/formulae/yabai"
 vscode "aaron-bond.better-comments"
 vscode "bradlc.vscode-tailwindcss"
 vscode "esbenp.prettier-vscode"
