@@ -1,0 +1,7 @@
+// ~/.vim/coc-settings.json
+{
+  "go.goplsOptions": {
+    "ui.semanticTokens": true
+  },
+  "semanticTokens.enable": true
+}

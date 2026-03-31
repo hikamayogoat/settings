@@ -1,6 +1,7 @@
 [alias]
   l = log -10 --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
   ll = log -50 --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
+  sdiff = -c delta.features=side-by-side diff # features で side-by-side という名前を付けて delta を呼び出す
 [ghq]
   root = ~/Develop/
 [core]
@@ -10,6 +11,8 @@
 [delta]
   navigate = true  # use n and N to move between diff sections
   dark = true      # or light = true, or omit for auto-detection
-#  side-by-side = true
+[delta "side-by-side"] # side-by-side という名前で呼び出された場合の設定値
+  side-by-side = true
+  line-numbers = true
 [merge]
   conflictStyle = zdiff3
