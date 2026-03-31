@@ -8,3 +8,4 @@ export WORDCHARS='*?[]~=/&;!#$%^(){}<>'
 
 # その他
 alias y=yazi
+alias diff=colordiff
