@@ -10,7 +10,7 @@ set number              " 行番号を表示
 set cursorline          " カーソル行をハイライト
 set laststatus=2        " ステータスラインを常に表示
 set mouse=a             " マウス操作を有効化
-set nowrap              " 長い行を折り返さない
+" set nowrap              " 長い行を折り返さない
 set re=0                " 正規表現エンジンを最適化
 let mapleader = "\<Space>" " スペースをリーダーキーに設定
 
@@ -19,6 +19,12 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
+
+" 表示行単位で移動するように変更
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " --- インデント・タブ ---
 set smartindent         " 改行時に自動でインデント
