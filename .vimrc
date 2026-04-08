@@ -1,6 +1,8 @@
 " ====================================================================
 " 基本設定 (表示・動作)
 " ====================================================================
+let mapleader = "\<Space>" " スペースをリーダーキーに設定
+
 set fenc=utf-8          " 文字コードをUTF-8に設定
 set nobackup            " バックアップファイルを作らない
 set noswapfile          " スワップファイルを作らない
@@ -12,7 +14,7 @@ set laststatus=2        " ステータスラインを常に表示
 set mouse=a             " マウス操作を有効化
 " set nowrap              " 長い行を折り返さない
 set re=0                " 正規表現エンジンを最適化
-let mapleader = "\<Space>" " スペースをリーダーキーに設定
+set scrolloff=10        " カーソルの上下に常に10行分の余白保つ
 
 " Space + h/j/k/l でウィンドウ間を移動
 nnoremap <leader>h <C-w>h
@@ -63,6 +65,8 @@ nnoremap q <Nop>
 " :PlugStatus    - 状態確認
 
 call plug#begin()
+" カーソル移動を楽にする系
+Plug 'easymotion/vim-easymotion'
 " LSP (補完・定義ジャンプ) 本体
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " VSCode風ダークテーマ
@@ -79,9 +83,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
-"" nerdtree
+" easymotion
+" 大文字小文字を区別しない
+let g:EasyMotion_smartcase = 1
+" 2文字検索でジャンプ
+nmap ss <Plug>(easymotion-s2)
+
+" nerdtree
 " Ctrl+Bでファイルツリーを表示
-nnoremap <C-b> :NERDTreeToggle<CR>
+map <leader>b :NERDTreeToggle<cr>
 " 隠しファイルを常に表示
 let NERDTreeShowHidden = 1
 " 開いているファイルに合わせて、NERDTree内のフォーカスを自動で移動させる
