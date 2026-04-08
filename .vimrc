@@ -87,10 +87,10 @@ call plug#end()
 " 大文字小文字を区別しない
 let g:EasyMotion_smartcase = 1
 " 2文字検索でジャンプ
-nmap ss <Plug>(easymotion-s2)
+nmap s <Plug>(easymotion-s2)
 
 " nerdtree
-" Ctrl+Bでファイルツリーを表示
+" Space -> Bでファイルツリーを表示
 map <leader>b :NERDTreeToggle<cr>
 " 隠しファイルを常に表示
 let NERDTreeShowHidden = 1
