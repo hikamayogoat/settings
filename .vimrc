@@ -14,7 +14,7 @@ set laststatus=2        " ステータスラインを常に表示
 set mouse=a             " マウス操作を有効化
 " set nowrap              " 長い行を折り返さない
 set re=0                " 正規表現エンジンを最適化
-set scrolloff=10        " カーソルの上下に常に10行分の余白保つ
+set scrolloff=15        " カーソルの上下に常に10行分の余白保つ
 
 " Space + h/j/k/l でウィンドウ間を移動
 nnoremap <leader>h <C-w>h
@@ -44,8 +44,8 @@ set hlsearch            " 検索結果をハイライト
 set showmatch           " 括弧の対応をハイライト
 
 " --- 検索ハイライト解除 ---
-" Esc2回押しで検索のハイライトを消す
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+" leader->Escで検索のハイライトを消す
+nnoremap <silent> <leader><Esc> :nohlsearch<CR>
 
 " ====================================================================
 " キーバインド (ショートカット)
