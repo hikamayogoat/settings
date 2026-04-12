@@ -14,7 +14,7 @@ set laststatus=2        " ステータスラインを常に表示
 set mouse=a             " マウス操作を有効化
 " set nowrap              " 長い行を折り返さない
 set re=0                " 正規表現エンジンを最適化
-set scrolloff=15        " カーソルの上下に常に10行分の余白保つ
+set scrolloff=15        " カーソルの上下に常に15行分の余白保つ
 
 " Space + h/j/k/l でウィンドウ間を移動
 nnoremap <leader>h <C-w>h
