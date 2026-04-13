@@ -58,6 +58,8 @@ nnoremap q <Nop>
 
 " ====================================================================
 " プラグイン管理 (vim-plug)
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " ====================================================================
 " :PlugInstall   - プラグインのインストール
 " :PlugUpdate    - プラグインの更新
@@ -113,7 +115,6 @@ colorscheme codedark    " テーマ適用
 " ====================================================================
 " :CocConfig         - coc本体の設定(json)を開く
 " :CocList extensions - インストール済みの言語サーバー一覧
-" :CocInstall [名]    - 言語サーバーの追加 (例: coc-pyright)
 let g:coc_global_extensions = [
   \ 'coc-go',
   \ 'coc-tsserver',
