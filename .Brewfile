@@ -1,4 +1,3 @@
-# コメントとかじゃなくて普通にメモ
 # brew bundle dump --global
 # mv ~/.Brewfile ./
 
