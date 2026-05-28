@@ -44,8 +44,9 @@ set hlsearch            " 検索結果をハイライト
 set showmatch           " 括弧の対応をハイライト
 
 " --- 検索ハイライト解除 ---
-" leader->Escで検索のハイライトを消す
-nnoremap <silent> <leader><Esc> :nohlsearch<CR>
+" 検索のハイライトを消す
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+nnoremap <leader><Esc> :nohlsearch<CR>
 
 " ====================================================================
 " キーバインド (ショートカット)
@@ -56,106 +57,121 @@ inoremap <silent> jj <ESC>
 " 間違えて記録が始まらないよう 'q' (マクロ記録) を無効化
 nnoremap q <Nop>
 
-" ====================================================================
-" プラグイン管理 (vim-plug)
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" ====================================================================
-" :PlugInstall   - プラグインのインストール
-" :PlugUpdate    - プラグインの更新
-" :PlugClean     - 不要なプラグインの削除
-" :PlugStatus    - 状態確認
-
-call plug#begin()
-" カーソル移動を楽にする系
-Plug 'easymotion/vim-easymotion'
-" LSP (補完・定義ジャンプ) 本体
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" VSCode風ダークテーマ
-Plug 'tomasiser/vim-code-dark'
-" ファイルツリー
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin' " 差分があるファイルを可視化
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " ファイルツリーに色をつける
-" アイコン表示
-Plug 'ryanoasis/vim-devicons'
-" Gitの差分を表示 
-Plug 'airblade/vim-gitgutter'
-" コメントアウト
-Plug 'tpope/vim-commentary'
-call plug#end()
-
-" easymotion
-" 大文字小文字を区別しない
-let g:EasyMotion_smartcase = 1
-" 2文字検索でジャンプ
-nmap s <Plug>(easymotion-s2)
-
-" nerdtree
-" Space -> Bでファイルツリーを表示
-map <leader>b :NERDTreeToggle<cr>
-" 隠しファイルを常に表示
-let NERDTreeShowHidden = 1
-" 開いているファイルに合わせて、NERDTree内のフォーカスを自動で移動させる
-map <leader>f :NERDTreeFind<cr>
-
-" vim-commentary
-xmap <Leader>/ <Plug>Commentary
-nmap <Leader>/ <Plug>CommentaryLine
 
 " ====================================================================
-" 外観 (カラースキーム)
+" プラグイン関連の設定 (VimPlug がある場合のみ実行)
 " ====================================================================
-syntax on
-set termguicolors       " ターミナルアプリのテーマに引っ張られないようにする
-colorscheme codedark    " テーマ適用
+" ~/.vim/autoload/plug.vim が存在するかチェック
+if filereadable(expand('~/.vim/autoload/plug.vim'))
 
-" ====================================================================
-" coc.nvim (LSP) の詳細設定
-" ====================================================================
-" :CocConfig         - coc本体の設定(json)を開く
-" :CocList extensions - インストール済みの言語サーバー一覧
-let g:coc_global_extensions = [
-  \ 'coc-go',
-  \ 'coc-tsserver',
-  \ 'coc-pyright',
-  \ 'coc-json',
-  \ 'coc-yaml',
-  \ 'coc-css',
-  \ 'coc-html',
-  \ 'coc-emmet',
-  \ 'coc-sh'
-  \ ]
+  " ====================================================================
+  " プラグイン管理 (vim-plug)
+  " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  " ====================================================================
+  " :PlugInstall   - プラグインのインストール
+  " :PlugUpdate    - プラグインの更新
+  " :PlugClean     - 不要なプラグインの削除
+  " :PlugStatus    - 状態確認
 
-" --- 定義ジャンプ・参照 ---
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
+  call plug#begin()
+  " カーソル移動を楽にする系
+  Plug 'easymotion/vim-easymotion'
+  " LSP (補完・定義ジャンプ) 本体
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " VSCode風ダークテーマ
+  Plug 'tomasiser/vim-code-dark'
+  " ファイルツリー
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin' " 差分があるファイルを可視化
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " ファイルツリーに色をつける
+  " アイコン表示
+  Plug 'ryanoasis/vim-devicons'
+  " Gitの差分を表示 
+  Plug 'airblade/vim-gitgutter'
+  " コメントアウト
+  Plug 'tpope/vim-commentary'
+  call plug#end()
 
-" --- ドキュメント表示 (Kキー) ---
-nnoremap <silent> K :call ShowDocumentation()<CR>
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
+  " easymotion
+  " 大文字小文字を区別しない
+  let g:EasyMotion_smartcase = 1
+  " 2文字検索でジャンプ
+  nmap s <Plug>(easymotion-s2)
 
-" --- 補完確定の設定 (Enterキー) ---
-" 補完候補を選んだ状態で Enter を押しても改行せず確定のみ行う
-inoremap <silent><nowait><expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  " NERDTree
+  " Space -> b でツリー表示を切り替え
+  map <leader>b :NERDTreeToggle<cr>
+  " 隠しファイルを常に表示
+  let NERDTreeShowHidden = 1
+  " 開いているファイルに合わせて、NERDTree内のフォーカスを自動で移動させる
+  map <leader>f :NERDTreeFind<cr>
 
-" --- 補完選択の設定 (Tabキー) ---
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
+  " vim-commentary
+  xmap <Leader>/ <Plug>Commentary
+  nmap <Leader>/ <Plug>CommentaryLine
 
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+  " ====================================================================
+  " 外観 (カラースキーム)
+  " ====================================================================
+  syntax on
+  set termguicolors       " ターミナルアプリのテーマに引っ張られないようにする
+  colorscheme codedark    " テーマ適用
 
-" --- Go の自動整形 --- 
-" フォーマットをかける
-autocmd BufWritePre *.go :call CocAction('format')
+  " ====================================================================
+  " coc.nvim (LSP) の詳細設定
+  " ====================================================================
+  " :CocConfig         - coc本体の設定(json)を開く
+  " :CocList extensions - インストール済みの言語サーバー一覧
+  let g:coc_global_extensions = [
+    \ 'coc-go',
+    \ 'coc-tsserver',
+    \ 'coc-pyright',
+    \ 'coc-json',
+    \ 'coc-yaml',
+    \ 'coc-css',
+    \ 'coc-html',
+    \ 'coc-emmet',
+    \ 'coc-sh'
+    \ ]
+
+  " --- 定義ジャンプ・参照 ---
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gr <Plug>(coc-references)
+
+  " --- ドキュメント表示 (Kキー) ---
+  nnoremap <silent> K :call ShowDocumentation()<CR>
+  function! ShowDocumentation()
+    if CocAction('hasProvider', 'hover')
+      call CocActionAsync('doHover')
+    else
+      call feedkeys('K', 'in')
+    endif
+  endfunction
+
+  " --- 補完確定の設定 (Enterキー) ---
+  " 補完候補を選んだ状態で Enter を押しても改行せず確定のみ行う
+  inoremap <silent><nowait><expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+  " --- 補完選択の設定 (Tabキー) ---
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1) :
+        \ CheckBackspace() ? "\<Tab>" :
+        \ coc#refresh()
+
+  function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  " --- Go の自動整形 --- 
+  " フォーマットをかける
+  autocmd BufWritePre *.go :call CocAction('format')
+
+else
+  " ====================================================================
+  " プラグインがない場合（踏み台環境など）のフォールバック設定
+  " ====================================================================
+  syntax on
+
+endif
